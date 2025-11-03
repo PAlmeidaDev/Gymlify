@@ -1,4 +1,6 @@
-git from User import UserProfile
+from User import UserProfile
+from FitnessCalculator import calculator
+
 
 def get_user_input():
     first_name = get_alpha_input("Enter your first name: ")
@@ -58,6 +60,10 @@ def main():
     user= get_user_input()
     print("Here is your Information:")
     print(user)
+    user.change_profile()
+    print(user)
+    bmi = calculator.calculate_bmi(user.weight, user.height)
+    print(f"{user.name}'s BMI is {bmi}")
 
 if __name__ == "__main__":
     main()
