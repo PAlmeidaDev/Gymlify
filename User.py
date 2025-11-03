@@ -13,6 +13,27 @@ class UserProfile:
         return (f"{self.first_name} {self.last_name}, {self.age} years old, {self.gender}, "
                 f"{self.height} cm, {self.weight} kg, Activity: {self.activity}, Objective: {self.objective}")
 
+
+    def change_profile(self):
+            print("\nWhich field would you like to update?")
+            print("Options: first_name, last_name, gender, weight, height, age, activity, objective")
+            field = input("Field to update: ").strip().lower()
+
+            if not hasattr(self, field):
+                print("Invalid field name.")
+                return
+
+            new_value = input(f"Enter new value for {field}: ")
+
+            # Type conversion depending on the field
+            if field in ["weight", "height"]:
+                new_value = float(new_value)
+            elif field == "age":
+                new_value = int(new_value)
+
+            setattr(self, field, new_value)
+            print(f"{field} updated successfully!")
+
     @property
     def name(self):
         return self.first_name #para o nome de cada perfil
