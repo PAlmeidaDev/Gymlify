@@ -14,6 +14,7 @@ class UserProfile:
                 f"{self.height} cm, {self.weight} kg, Activity: {self.activity}, Objective: {self.objective}")
 
 
+
     def change_profile(self):
             print("\nWhich field would you like to update?")
             print("Options: first_name, last_name, gender, weight, height, age, activity, objective")
@@ -37,3 +38,24 @@ class UserProfile:
     @property
     def name(self):
         return self.first_name #para o nome de cada perfil
+
+    def daily_calorie_adjustment(self):
+        """Return calorie adjustment for the user's goal.
+        Contract: must return an integer or float.
+        Subclasses MUST override this method.
+        """
+        raise NotImplementedError("Subclasses must implement this method.")
+
+
+class LoseWeightUser(UserProfile):
+    def daily_calorie_adjustment(self):
+        return -500
+
+class MaintainUser(UserProfile):
+    def daily_calorie_adjustment(self):
+        return 0
+
+
+class GainWeightUser(UserProfile):
+    def daily_calorie_adjustment(self):
+        return +300
